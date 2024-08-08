@@ -22,7 +22,7 @@
 		}
 	];
 
-	let critique;
+	let critique: Promise<any>;
 	let text = '';
 	let persona = Persona.BALANCED;
 
@@ -33,8 +33,6 @@
 		});
 
 		const data = await res.json();
-
-		console.log(data);
 
 		if (res.status !== 200) throw new Error(data.message);
 
@@ -63,10 +61,10 @@
 <form on:submit|preventDefault={handleFormSubmit} class="flex flex-col gap-4">
 	<textarea
 		class="h-[70vh] w-full rounded border border-stone-300 p-6 text-lg"
-		placeholder="Paste your poem, story, or other text here... (100-5000 characters)"
+		placeholder="Paste your poem, story, or other text here... (100-20000 characters)"
 		bind:value={text}
 		minlength="100"
-		maxlength="5000"
+		maxlength="20000"
 	></textarea>
 	<div class="flex flex-col gap-2">
 		<label for="persona" class="font-sans">Critic persona:</label>
